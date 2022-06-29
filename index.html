@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0" />
+		<meta name="author" content="Armin Pfäffle" />
+		<meta name="robots" content="index, follow" />
+
+		<title>ap-image-fullscreen</title>
+		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/ap-image-zoom.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/ap-image-fullscreen.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/ap-image-fullscreen-themes.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+
+		 <script src="js/jquery.min.js"></script>
+		 <script src="js/hammer.min.js"></script>
+		 <script src="js/jquery.mousewheel.min.js"></script>
+		 <script src="js/ap-image-zoom.js"></script>
+		 <script src="js/screenfull.min.js"></script>
+		 <script src="js/ap-image-fullscreen.js"></script>
+		<!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	</head>
+
+	<body>
+		<div class="controls-container">
+			<header>
+				ap-image-fullscreen
+			</header>
+			<!-- <div class="options"> -->
+			<div class="optionss">
+				<input type="checkbox" id="use-fullscreen" name="use-fullscreen" />
+				<label for="use-fullscreen">Use fullscreen</label>
+				<br />
+				<br />
+				<input type="button" value="Open" id="open" />
+			</div>
+			<footer>
+				<a href="http://www.armin-pfaeffle.de">armin-pfaeffle.de</a>
+				<a href="https://github.com/armin-pfaeffle/ap-image-fullscreen">github.com</a>
+			</footer>
+		</div>
+
+		<ul class="images clearfix">
+			<li><a href="images/pride-w'14-3_large.jpg"></a></li>
+			<li><a href="images/small.jpg" data-background-color="blue"></a></li>
+			<li><a href="images/pride-w'14-9_large.jpg"></a></li>
+			<li><a href="images/pride-w'14-6_large.jpg"></a></li>
+			<li><a href="images/pride-w'14-3_large.jpg"></a></li>
+			<li><a href="images/pride-w'14-8_large.jpg"></a></li>
+			<li><a href="images/image.jpg"></a></li>
+			<li><a href="images/ammajan.jpg"></a></li>
+			<li><a href="images/pride-w'14-6_large.jpg" data-background-color="#800"></a></li>
+		</ul>
+
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.images a').apImageFullscreen({
+					// Only works with enableScreenfull: false, because of browsers do not allow programmatic fullscreen
+					autoOpen: false,
+					enableScreenfull: true,
+					lazyLoad: 'visible',
+					imageZoom: {
+						loadingAnimation: 'image',
+						loadingAnimationData: 'lib/images/hourglass_b.png'
+					},
+					
+					// onPseudoFullscreenFallback: function() {
+					// 	alert('pseudoFullscreenFallback');
+					// 	return false;
+					// }
+					
+				});
+
+				$('#open').click(function() {
+					$('.images a:first')
+						.apImageFullscreen('open', 1);
+				});
+			});
+
+		</script>
+	</body>
+</html>
